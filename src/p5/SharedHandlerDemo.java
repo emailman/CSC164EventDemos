@@ -54,7 +54,7 @@ public class SharedHandlerDemo extends Application {
             alert.setTitle("Button Press Detected");
             alert.setHeaderText(null);
 
-            alert.setContentText((event.getSource() == btUp) ?
+            alert.setContentText(event.getSource() == btUp ?
                     "UP button was pressed" : "DOWN button was pressed");
             alert.showAndWait();
         }
