@@ -76,6 +76,7 @@ public class RadioButton_CheckBox_Demo extends Application {
         primaryStage.show();
     }
 
+    // This will get called when the windows' close control (X) is clicked
     @Override
     public void stop() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
