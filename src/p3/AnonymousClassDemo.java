@@ -1,8 +1,8 @@
-package p1;
+package p3;
 
 /*
  * Created by emailman on 3/17/2016.
- * Handlers implemented as external classes.
+ * Handlers implemented an anonymous inner classes.
  */
 
 import javafx.application.Application;
@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Demo1 extends Application{
+public class AnonymousClassDemo extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -25,14 +25,30 @@ public class Demo1 extends Application{
         // Define an UP Button and register a handler for it
         Button btUp = new Button("UP");
         btUp.setPrefWidth(100);
-        UpButtonHandler handler1 = new UpButtonHandler();
-        btUp.setOnAction(handler1);
+        btUp.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Button Press Detected");
+                alert.setHeaderText(null);
+                alert.setContentText("UP Button was pressed");
+                alert.showAndWait();
+            }
+        });
 
         // Define a DOWN Button and register a handler for it
         Button btDown = new Button("DOWN");
         btDown.setPrefWidth(100);
-        DownButtonHandler handler2 = new DownButtonHandler();
-        btDown.setOnAction(handler2);
+        btDown.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Button Press Detected");
+                alert.setHeaderText(null);
+                alert.setContentText("DOWN button was pressed");
+                alert.showAndWait();
+            }
+        });
 
         // Add the buttons to the pane
         pane.getChildren().addAll(btUp, btDown);
@@ -44,27 +60,5 @@ public class Demo1 extends Application{
         primaryStage.setTitle("Call Buttons");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-}
-
-class UpButtonHandler implements EventHandler<ActionEvent> {
-    @Override
-    public void handle(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Button Press Detected");
-        alert.setHeaderText(null);
-        alert.setContentText("UP Button was pressed");
-        alert.showAndWait();
-    }
-}
-
-class DownButtonHandler implements EventHandler<ActionEvent> {
-    @Override
-    public void handle(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Button Press Detected");
-        alert.setHeaderText(null);
-        alert.setContentText("DOWN button was pressed");
-        alert.showAndWait();
     }
 }

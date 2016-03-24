@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Demo5 extends Application {
+public class SharedHandlerDemo extends Application {
     Button btUp;
     Button btDown;
 
